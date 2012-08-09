@@ -1,0 +1,65 @@
+The Babyname In USA
+========================================================
+
+On my 25th birthday,I strolled in the gitHub.I find a research about the babynames from the 1880 to 2008,the author list a list about a thousand babynames which are used most.He wants to see the  1000 names include the percent the whole the country babynames.
+It is interesting to find the 1000 boynames decreasing slower than the girls'.To the 2008,the 1000 boynames still include at least 80% the whole boynames in the state.But the girls' has decreased to about 68%.
+I want to find the most used babynames in the 2008.
+```{r}
+babyname=read.csv("F:/苏建冲出品/数据集/babynames/baby-names.csv",header=T)
+head(babyname)
+baby2008=babyname[babyname[,1]=="2008",]
+boy2008=baby2008[baby2008$sex=="boy",]
+girl2008=baby2008[baby2008$sex=="girl",]
+btop2008=boy2008[order(boy2008$percent,decreasing=T),]
+head(btop2008,10)
+
+```
+So,Jacob is the champion.There is a boy named Jacob in one hundred boys.The other most used boynames in 2008 are Michael,Ethan,Joshua,Daniel and Alexander.
+It is quite funny in the hot US TV series _LOST_,Jacob ,Michael,Ethan and Daniel all there.
+Maybe when make the TV series story,the maker has pay the attention the research.
+Maybe the most babynames research is quite useful for our life!
+How sex the finding!
+Next to the girls
+```{r}
+gtop2008=girl2008[order(girl2008$percent,decreasing=T),]
+head(gtop2008,10)
+```
+The most used girlnames are Emma,Isabella,Emily,Madison and Ava.
+
+Haha,i thought the "Jack" and "Rose" will win the games.
+Now i will find the order the "Jack"and"Rose".
+
+```{r}
+which(btop2008$name=="Jack")
+btop2008[which(btop2008$name=="Jack"),]
+which(gtop2008$name=="Rose")
+btop2008[which(gtop2008$name=="Rose"),]
+```
+Wooe."Jack" ranks the 39,"Rose" is far away from the "Jack",she ranks the 334.
+
+Ok,let us do it again in the 1880.
+
+```{r}
+baby1880=babyname[babyname[,1]=="1880",]
+boy1880=baby1880[baby1880$sex=="boy",]
+girl1880=baby1880[baby1880$sex=="girl",]
+btop1880=boy1880[order(boy1880$percent,decreasing=T),]
+head(btop1880,10)
+gtop1880=girl1880[order(girl2008$percent,decreasing=T),]
+head(gtop1880,10)
+```
+John,James,Charles are still in the _LOST_.
+Where are the "Jack" and "Rose"?
+```{r}
+which(btop1880$name=="Jack")
+btop2008[which(btop1880$name=="Jack"),]
+which(gtop1880$name=="Rose")
+btop2008[which(gtop1880$name=="Rose"),]
+
+```
+####Jack is 77,and Rose is 30.Compare to 2008,Jack is 39,Rose is 334.
+"Rose" had made a huge change in the history of girlnames.She also made the farther distance to Jack.What a pity about _Titanic_!
+
+
+
+
